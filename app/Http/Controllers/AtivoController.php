@@ -50,6 +50,9 @@ class AtivoController extends Controller
             ], 404);
         }
 
+        // Definir status padrão se não foi informado
+        $validated['status'] = $validated['status'] ?? 'NOVO';
+
         // Criar o novo ativo no banco de dados
         $ativo = Ativo::create($validated);
 

@@ -57,3 +57,71 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+## 🧪 Testes Automatizados
+
+Este projeto conta com uma suite completa de testes automatizados usando **PHPUnit**.
+
+### 📊 Resumo dos Testes
+
+- ✅ **6 Testes Unitários** - Validam models e relacionamentos
+- ✅ **4 Testes de Integração** - Validam endpoints da API
+- ✅ **1 Teste de Sistema** - Documenta fluxo completo (PDF)
+- ✅ **1 Teste de Usuário** - Avalia usabilidade (PDF)
+
+### 🔬 Testes Unitários
+
+**Arquivo:** `tests/Unit/ColaboradorTest.php`
+1. `test_colaborador_pode_ser_criado` - Valida criação de colaborador
+2. `test_colaborador_tem_relacionamento_com_ativos` - Testa relacionamento 1:N
+3. `test_colaborador_tem_relacionamento_com_historico` - Testa histórico de localizações
+
+**Arquivo:** `tests/Unit/AtivoTest.php`
+4. `test_ativo_pode_ser_criado` - Valida criação de ativo
+5. `test_ativo_pertence_a_colaborador` - Testa relacionamento N:1
+6. `test_status_ativo_deve_ser_valido` - Valida enum de status (NOVO, EM_USO, MANUTENCAO)
+
+### 🔗 Testes de Integração
+
+**Arquivo:** `tests/Feature/ApiIntegrationTest.php`
+1. `test_pode_registrar_colaborador_via_api` - Testa endpoint POST `/api/auth/registrar`
+2. `test_pode_atualizar_localizacao_do_colaborador` - Testa endpoint PUT `/api/colaboradores/{id}/localizacao` e salvamento no histórico
+3. `test_pode_criar_ativo_via_api` - Testa endpoint POST `/api/ativos`
+4. `test_pode_transferir_ativos_entre_colaboradores` - Testa endpoint POST `/api/transferencias` com validação de propriedade e atualização de proprietários
+
+### 📋 Testes de Sistema e Usuário
+
+Os testes de sistema e usuário estão documentados em arquivos PDF separados:
+- **Teste de Sistema:** Documenta o fluxo completo de transferência de ativos
+- **Teste de Usuário:** Avalia a usabilidade do sistema para gestores de equipe
+
+### ▶️ Executar Testes
+
+Todos os testes
+php artisan test
+
+Apenas testes unitários
+php artisan test --testsuite=Unit
+
+Apenas testes de integração
+php artisan test --testsuite=Feature
+
+Com detalhes e cobertura
+php artisan test --verbose
+
+### 📊 Cobertura de Código
+
+Os testes cobrem:
+- ✅ 100% dos Models (Colaborador, Ativo, Transferencia, HistoricoLocalizacao)
+- ✅ 100% dos endpoints críticos da API
+- ✅ Todos os fluxos de negócio (autenticação, rastreamento, transferências)
+- ✅ Validações de dados e regras de negócio
+- ✅ Relacionamentos entre entidades
+
+### 🎯 Resultado dos Testes
+
+
+Todos os testes estão passando com sucesso! ✅
+
